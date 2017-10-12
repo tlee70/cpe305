@@ -24,10 +24,6 @@ public class Driver extends User{
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
-	
-	public void payment(double fare) {
-		balance+=fare;
-	}
 
 	public Title getTitle() {
 		return title;
@@ -36,4 +32,5 @@ public class Driver extends User{
 	public double getRating() {
 		return rating;
 	}
+
 }

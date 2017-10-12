@@ -32,4 +32,7 @@ public abstract class User {
 		return balance;
 	}
 	
+	public void changeBalance(double change) {
+		balance += change;
+	}
  }
