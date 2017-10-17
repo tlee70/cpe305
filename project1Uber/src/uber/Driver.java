@@ -5,16 +5,19 @@ package uber;
  * @author tlee70
  *
  */
+
 public class Driver extends User{
 	private Title title;
 	private boolean available;
-	private double rating;
+	private double avgRating;
+	private double numRatings; // necessary to keep running average
 	
 	public Driver(String name, Location loc, double balance, Title title) {
 		super(name, loc, balance);
 		this.title = title;
 		available = true;
-		rating = 0;
+		avgRating = 0;
+		numRatings = 0;
 	}
 
 	public boolean isAvailable() {
@@ -29,8 +32,16 @@ public class Driver extends User{
 		return title;
 	}
 	
-	public double getRating() {
-		return rating;
+	public double getAvgRating() {
+		return avgRating;
 	}
-
+	
+	public void receiveRating(int rating) {
+		numRatings++;
+		avgRating = avgRating + (rating - avgRating)/numRatings;
+	}
+	
+	public boolean acceptsRequest() {
+		return true;
+	}
 }
