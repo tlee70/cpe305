@@ -18,6 +18,9 @@ public class Location {
 	}
 	
 	public double getDistance(Location other) {
-		return Math.sqrt( (this.x-other.getX())^2 + (this.y-other.getY())^2 );
+		double x2 = Math.pow((this.x - other.getX()),2);
+		double y2 = Math.pow((this.y - other.getY()),2);
+		
+		return Math.sqrt(x2+y2);
 	}
 }

@@ -28,9 +28,17 @@ public class Trip {
 	public Location getDestination() {
 		return destination;
 	}
+	
+	public double getInitDist() {
+		return initDist;
+	}
 
 	public double getTotalDist() {
 		return totalDist;
+	}
+	
+	public double getFare(double rate) {
+		return (totalDist * rate);
 	}
 	
 }

@@ -1,7 +1,8 @@
 package uber;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.Iterator;
 
 public class UberRunner {
@@ -28,18 +29,20 @@ public class UberRunner {
 		Location pickup = passenger.getLoc();
 		Location dest = passenger.requestRide(SIZE);
 		Driver driver;
+		Double dist;
 		
-		PriorityQueue<Driver> pq = new PriorityQueue<Driver>(new DriverDistanceComparator(pickup));
+		TreeMap<Double, Driver> treemap = new TreeMap<Double, Driver>();
 		Iterator<Driver> iterator = drivers.iterator();
 		while (iterator.hasNext()) {
 			driver = iterator.next();
-			if (driver.isAvailable())
-				pq.add(driver);
+			if (driver.isAvailable()) {
+				dist = pickup.getDistance(driver.getLoc());
+				treemap.put(dist, driver);
+			}
 		}
 		
-		iterator = pq.iterator();
-		while (iterator.hasNext()) {
-			driver = iterator.next();
+		for (Map.Entry<Double, Driver> entry : treemap.entrySet()) {
+			driver = entry.getValue();
 			if (driver.acceptsRequest()) {
 				System.out.println(passenger.getName() + ", " + driver.getName() + " has accepted your request");
 				return (new Trip(passenger, driver, dest));
