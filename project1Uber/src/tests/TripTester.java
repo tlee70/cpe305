@@ -21,6 +21,9 @@ public class TripTester {
 		
 		assertEquals(13.0, trip.getInitDist(), 0.001);
 		assertEquals(18.0, trip.getTotalDist(), 0.001);
-		assertEquals(197.10, trip.getFare(10.95), 0.01);
+		assertEquals(180, trip.getFare(), 0.01);
+		
+		trip.setPrice(10.95);
+		assertEquals(197.1, trip.getFare(), 0.01);
 	}
 }

@@ -24,7 +24,7 @@ public abstract class User {
 		return loc;
 	}
 	
-	public void changeLoc(Location loc) {
+	public void setLoc(Location loc) {
 		this.loc = loc;
 	}
 

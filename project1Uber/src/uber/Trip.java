@@ -1,20 +1,40 @@
 package uber;
 
 public class Trip {
+	public static final double DEFAULT_PRICE = 10.00;
+	
 	
 	private Passenger passenger;
 	private Driver driver;
 	private Location destination;
 	private double initDist;
-	private double totalDist;
+	private double destDist;
+	private double fare;
 
 	public Trip(Passenger passenger, Driver driver, Location destination) {
+		driver.setAvailable(false);
+		
 		this.passenger = passenger;
 		this.driver = driver;
 		this.destination = destination;
 		
 		initDist = this.driver.getLoc().getDistance(this.passenger.getLoc());
-		totalDist = initDist + this.passenger.getLoc().getDistance(this.destination);
+		destDist = this.passenger.getLoc().getDistance(this.destination);
+		
+		fare = getTotalDist() * DEFAULT_PRICE;
+	}
+	
+	public Trip(Passenger passenger, Driver driver, Location destination, double price) {
+		driver.setAvailable(false);
+		
+		this.passenger = passenger;
+		this.driver = driver;
+		this.destination = destination;
+		
+		initDist = this.driver.getLoc().getDistance(this.passenger.getLoc());
+		destDist = this.passenger.getLoc().getDistance(this.destination);
+		
+		fare = getTotalDist() * price;
 	}
 	
 	public Passenger getPassenger() {
@@ -32,13 +52,21 @@ public class Trip {
 	public double getInitDist() {
 		return initDist;
 	}
+	
+	public double getDestDist() {
+		return destDist;
+	}
 
 	public double getTotalDist() {
-		return totalDist;
+		return initDist + destDist;
 	}
 	
-	public double getFare(double rate) {
-		return (totalDist * rate);
+	public void setPrice(double price) {
+		fare = getTotalDist() * price;
 	}
 	
+	public double getFare() {
+		return fare;
+	}
+
 }

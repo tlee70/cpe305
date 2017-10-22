@@ -17,7 +17,7 @@ public class Passenger extends User{
 		random = new Random();
 	}
 	
-	public Location requestRide(int gridSize) {
+	public Location selectRandomDestination(int gridSize) {
 		int x = random.nextInt(gridSize);
 		int y = random.nextInt(gridSize);
 		

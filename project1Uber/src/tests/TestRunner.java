@@ -9,6 +9,8 @@ public class TestRunner {
 		runTests(LocationTester.class);
 		runTests(DriverTester.class);
 		runTests(TripTester.class);
+		runTests(UberRunnerTester.class);
+		runTests(TripTaskTester.class);
 	}
 	
 	public static void runTests(Class<?> tester) {
@@ -19,5 +21,6 @@ public class TestRunner {
 		}
 		
 		System.out.println(result.wasSuccessful());
+		System.out.println("----------------------------------");
 	}
 }
