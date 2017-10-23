@@ -1,5 +1,7 @@
 package uber;
 
+import java.lang.StringBuilder;
+
 public class Location {
 	private int x;
 	private int y;
@@ -22,5 +24,25 @@ public class Location {
 		double y2 = Math.pow((this.y - other.getY()),2);
 		
 		return Math.sqrt(x2+y2);
+	}
+	
+	public boolean equals(Object other) {
+		if (other instanceof Location) {
+			Location loc = (Location) other;
+			if (loc.getX() == this.x && loc.getY() == this.y)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder("(");
+		builder.append(x);
+		builder.append(", ");
+		builder.append(y);
+		builder.append(")");
+		
+		return builder.toString();
 	}
 }

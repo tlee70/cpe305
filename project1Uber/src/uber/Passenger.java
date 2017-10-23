@@ -12,16 +12,14 @@ public class Passenger extends User{
 	
 	private Random random;
 	
-	public Passenger(String name, Location loc, double balance) {
-		super(name, loc, balance);
+	public Passenger(String name, double balance) {
+		super(name, balance);
 		random = new Random();
 	}
 	
-	public Location selectRandomDestination(int gridSize) {
-		int x = random.nextInt(gridSize);
-		int y = random.nextInt(gridSize);
-		
-		return new Location(x,y);
+	public Passenger(String name, Location loc, double balance) {
+		super(name, loc, balance);
+		random = new Random();
 	}
 	
 	public int giveRating() {

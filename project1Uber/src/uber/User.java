@@ -10,6 +10,12 @@ public abstract class User {
 	protected double balance;
 	protected Location loc;
 	
+	public User(String name, double balance) {
+		this.name = name;
+		this.balance = balance;
+		loc = new Location(0,0);
+	}
+	
 	public User(String name, Location loc, double balance) {
 		this.name = name;
 		this.loc = loc;
@@ -30,6 +36,10 @@ public abstract class User {
 
 	public double getBalance() {
 		return balance;
+	}
+	
+	public String getBalanceFormatted() {
+		return String.format( "$%.2f", balance);
 	}
 	
 	public void changeBalance(double change) {

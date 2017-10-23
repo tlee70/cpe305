@@ -10,7 +10,15 @@ public class Driver extends User{
 	private Title title;
 	private boolean available;
 	private double avgRating;
-	private double numRatings; // necessary to keep running average
+	private int numRatings; // necessary to keep running average
+	
+	public Driver(String name, double balance, Title title) {
+		super(name, balance);
+		this.title = title;
+		available = true;
+		avgRating = 0;
+		numRatings = 0;
+	}
 	
 	public Driver(String name, Location loc, double balance, Title title) {
 		super(name, loc, balance);
@@ -38,7 +46,7 @@ public class Driver extends User{
 	
 	public void receiveRating(int rating) {
 		numRatings++;
-		avgRating = avgRating + (rating - avgRating)/numRatings;
+		avgRating = avgRating + ((double)rating - avgRating)/numRatings;
 	}
 	
 	public boolean acceptsRequest() {

@@ -3,13 +3,13 @@ package uber;
 public class Trip {
 	public static final double DEFAULT_PRICE = 10.00;
 	
-	
 	private Passenger passenger;
 	private Driver driver;
 	private Location destination;
-	private double initDist;
-	private double destDist;
+	private Location driverStart;
+	private Location passengerStart;
 	private double fare;
+	private boolean canceled;
 
 	public Trip(Passenger passenger, Driver driver, Location destination) {
 		driver.setAvailable(false);
@@ -18,10 +18,11 @@ public class Trip {
 		this.driver = driver;
 		this.destination = destination;
 		
-		initDist = this.driver.getLoc().getDistance(this.passenger.getLoc());
-		destDist = this.passenger.getLoc().getDistance(this.destination);
+		driverStart = driver.getLoc();
+		passengerStart = passenger.getLoc();
 		
 		fare = getTotalDist() * DEFAULT_PRICE;
+		canceled = false;
 	}
 	
 	public Trip(Passenger passenger, Driver driver, Location destination, double price) {
@@ -31,10 +32,11 @@ public class Trip {
 		this.driver = driver;
 		this.destination = destination;
 		
-		initDist = this.driver.getLoc().getDistance(this.passenger.getLoc());
-		destDist = this.passenger.getLoc().getDistance(this.destination);
+		driverStart = driver.getLoc();
+		passengerStart = passenger.getLoc();
 		
 		fare = getTotalDist() * price;
+		canceled = false;
 	}
 	
 	public Passenger getPassenger() {
@@ -49,16 +51,24 @@ public class Trip {
 		return destination;
 	}
 	
+	public Location getDriverStart() {
+		return driverStart;
+	}
+	
+	public Location getPassengerStart() {
+		return passengerStart;
+	}
+	
 	public double getInitDist() {
-		return initDist;
+		return this.driver.getLoc().getDistance(this.passenger.getLoc());
 	}
 	
 	public double getDestDist() {
-		return destDist;
+		return this.passenger.getLoc().getDistance(this.destination);
 	}
 
 	public double getTotalDist() {
-		return initDist + destDist;
+		return getInitDist() + getDestDist();
 	}
 	
 	public void setPrice(double price) {
@@ -68,5 +78,16 @@ public class Trip {
 	public double getFare() {
 		return fare;
 	}
+	
+	public String getFareFormatted() {
+		return String.format( "$%.2f", fare);
+	}
 
+	public void setCanceled(boolean bool) {
+		canceled = bool;
+	}
+	
+	public boolean isCanceled() {
+		return canceled;
+	}
 }

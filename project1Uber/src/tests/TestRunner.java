@@ -9,11 +9,12 @@ public class TestRunner {
 		runTests(LocationTester.class);
 		runTests(DriverTester.class);
 		runTests(TripTester.class);
+		runTests(UberIOTester.class);
 		runTests(UberRunnerTester.class);
-		runTests(TripTaskTester.class);
 	}
 	
 	public static void runTests(Class<?> tester) {
+		System.out.println("----------------------------------");
 		System.out.println("Running " + tester.getName() + "...");
 		Result result = JUnitCore.runClasses(tester);
 		for (Failure failure : result.getFailures()) {
@@ -21,6 +22,6 @@ public class TestRunner {
 		}
 		
 		System.out.println(result.wasSuccessful());
-		System.out.println("----------------------------------");
+		
 	}
 }
