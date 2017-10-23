@@ -7,8 +7,24 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
 
+/**
+ * Controls I/O for the Uber program
+ * Uses JSON 
+ * Contains warning because of json.simple's lack of generics and use of raw types
+ * 
+ * @author Tim Lee
+ *
+ */
+
 public class UberIO {
 	
+	/**
+	 * Initializes the Users based on the input file
+	 * Assumes properly formatted JSON in .txt or .json file
+	 * Nonexistent or improperly formatted files cause method to return null
+	 * @param fileName the name of the input file to open
+	 * @return the set of initialized Users
+	 */
 	public static UsersList initialize(String fileName) {
 		try {
 			File file = new File(fileName);
@@ -23,7 +39,6 @@ public class UberIO {
 			
 			reader.close();
 			
-			//FILL IN HERE
 			List<Passenger> passengers = parsePassengers(pArray);
 			List<Driver> drivers = parseDrivers(dArray);
 			
@@ -33,7 +48,6 @@ public class UberIO {
 			System.out.println("Initialize caught IOException: " + e);
 			System.out.println(e.getStackTrace());
 		}
-		
 		catch(ParseException e) {
 			System.out.println("Initialize caught ParseException: " + e);
 			System.out.println(e.getStackTrace());
@@ -42,6 +56,12 @@ public class UberIO {
 		return null;
 	}
 	
+	/**
+	 * Helper method for initialize() Interprets JSONArray as List of Passenger Objects
+	 * @param pArray an input JSONArray
+	 * @return a List of Passengers
+	 */
+	@SuppressWarnings("rawtypes")
 	public static List<Passenger> parsePassengers(JSONArray pArray) {
 		List<Passenger> passengers = new LinkedList<Passenger>();
 		
@@ -58,6 +78,12 @@ public class UberIO {
 		return passengers;
 	}
 	
+	/**
+	 * Helper method for initialize() Interprets JSONArray as List of Driver Objects
+	 * @param dArray an input JSONArray
+	 * @return a List of Drivers
+	 */
+	@SuppressWarnings("rawtypes")
 	public static List<Driver> parseDrivers(JSONArray dArray) {
 		List<Driver> drivers = new LinkedList<Driver>();
 		
@@ -82,6 +108,13 @@ public class UberIO {
 		return drivers;
 	}
 	
+	/**
+	 * Saves all trips as a JSON file
+	 * Currently saves all data on one line; attempt to find way to format data onto multiple lines
+	 * 
+	 * @param trips the List of Trips to save
+	 * @param fileName the path to the location to save the data
+	 */
 	@SuppressWarnings("unchecked")
 	public static void tripLog(List<Trip> trips, String fileName) {
 		try {
@@ -104,6 +137,11 @@ public class UberIO {
 		}
 	}
 	
+	/**
+	 * Helper method for tripLog() encodes a single Trip as a JSON object
+	 * @param trip the trip to encode
+	 * @return an encoded JSONObject
+	 */
 	@SuppressWarnings("unchecked")
 	public static JSONObject encodeTrip(Trip trip) {
 		JSONObject obj = new JSONObject();
@@ -120,6 +158,13 @@ public class UberIO {
 	    return obj;
 	}
 	
+	/**
+	 * Creates a final output text file 
+	 * 
+	 * @param trips the List of executed Trips
+	 * @param users the set of all Users
+	 * @param fileName the file location to save the data
+	 */
 	public static void finalOutput(List<Trip> trips, UsersList users, String fileName) {
 		List<Passenger> passengers = users.getPassengers();
 		List<Driver> drivers = users.getDrivers();

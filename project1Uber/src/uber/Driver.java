@@ -44,11 +44,24 @@ public class Driver extends User{
 		return avgRating;
 	}
 	
+	/**
+	 * Receives a rating and uses it to update the average rating
+	 * Does not keep track of all ratings, uses a formula to update
+	 * Formula does require number of ratings, but still uses less memory than array of all ratings
+	 * 
+	 * @param rating the received rating
+	 */
 	public void receiveRating(int rating) {
 		numRatings++;
 		avgRating = avgRating + ((double)rating - avgRating)/numRatings;
 	}
 	
+	/**
+	 * Decides whether or not to accept a request
+	 * Currently always true for ease of testing 
+	 * Can easily implement a Random if desired
+	 * @return boolean representing whether or not the request is accepted
+	 */
 	public boolean acceptsRequest() {
 		return true;
 	}

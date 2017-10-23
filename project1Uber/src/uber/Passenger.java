@@ -22,6 +22,11 @@ public class Passenger extends User{
 		random = new Random();
 	}
 	
+	/**
+	 * Gives a 1-5 int rating for a Driver
+	 * Currently random, could implement other method of rating
+	 * @return an integer 1-5 (inclusive)
+	 */
 	public int giveRating() {
 		return (random.nextInt(5) + 1);
 	}

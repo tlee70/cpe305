@@ -2,7 +2,13 @@ package uber;
 
 import java.util.List;
 import java.util.LinkedList;
-
+/**
+ * UsersList is an enclosing class for Lists of Passenger and Driver
+ * Primarily implemented so initializer could pass both lists, also used for some of UberRunner's methods
+ * 
+ * @author Tim
+ *
+ */
 public class UsersList {
 	private List<Passenger> passengers;
 	private List<Driver> drivers;

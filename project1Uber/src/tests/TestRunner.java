@@ -10,7 +10,7 @@ public class TestRunner {
 		runTests(DriverTester.class);
 		runTests(TripTester.class);
 		runTests(UberIOTester.class);
-		runTests(UberRunnerTester.class);
+		runTests(UberAppTester.class);
 	}
 	
 	public static void runTests(Class<?> tester) {

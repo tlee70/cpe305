@@ -2,6 +2,14 @@ package uber;
 
 import java.lang.StringBuilder;
 
+/**
+ * Location contains an X and Y coordinate 
+ * Classes keep track of their Location instead of a Grid keeping track of them
+ * 
+ * @author Tim
+ *
+ */
+
 public class Location {
 	private int x;
 	private int y;
@@ -19,6 +27,11 @@ public class Location {
 		return y;
 	}
 	
+	/**
+	 * Calculates the distance to another Location
+	 * @param other the other Location
+	 * @return the distance between this Location and the given one
+	 */
 	public double getDistance(Location other) {
 		double x2 = Math.pow((this.x - other.getX()),2);
 		double y2 = Math.pow((this.y - other.getY()),2);

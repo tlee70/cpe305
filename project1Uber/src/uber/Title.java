@@ -2,11 +2,11 @@ package uber;
 
 /**
  * Car Title contains legal information about a car
+ * Not currently used for anything, just more identifying information about Driver
  * @author tlee70
  *
  */
 public class Title {
-	// Change make and model to enumerated types if have time
 	private String make;
 	private String model;
 	private int year;

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import uber.*;
 import java.util.LinkedList;
 
-public class UberRunnerTester {
+public class UberAppTester {
 
 	@Test
 	public void createTripTester() {
@@ -22,7 +22,7 @@ public class UberRunnerTester {
 
 		Passenger passenger = new Passenger("Metatron", new Location(38, 22), 777);
 		
-		Trip trip = UberRunner.createTrip(passenger, new Location(5,6), drivers);
+		Trip trip = UberApp.createTrip(passenger, new Location(5,6), drivers);
 		
 		assertEquals(Raphael, trip.getDriver());
 		assertEquals(Math.sqrt(157), trip.getInitDist(), 0.001);
@@ -34,7 +34,7 @@ public class UberRunnerTester {
 		Driver driver = new Driver("Inara", new Location(22,3), 0.0, null);
 		Trip trip = new Trip(passenger, driver, new Location(15,16));
 		
-		UberRunner.executeTransaction(trip);
+		UberApp.executeTransaction(trip);
 		assertTrue(trip.isCanceled());
 		assertEquals(10.0, passenger.getBalance(), 0.01);
 		assertEquals(0.0, driver.getBalance(), 0.01);
@@ -46,7 +46,7 @@ public class UberRunnerTester {
 		Driver driver = new Driver("Bonnie", new Location(6,8), 0.0, null);
 		Trip trip = new Trip(passenger, driver, new Location(0,0), 1.0);
 		
-		UberRunner.executeTransaction(trip);
+		UberApp.executeTransaction(trip);
 		assertFalse(trip.isCanceled());
 		assertEquals(10.00, trip.getFare(), 0.01);
 		assertEquals(9989.00, passenger.getBalance(), 0.01);
@@ -73,7 +73,7 @@ public class UberRunnerTester {
 		Driver Uriel = new Driver("Uriel", new Location(55, 8), 0, null);
 		drivers.add(Uriel);
 		
-		UberRunner.runTrips(new UsersList(passengers, drivers));
+		UberApp.runTrips(new UsersList(passengers, drivers));
 		System.out.println("Michael's Rating: " + Michael.getAvgRating());
 	}
 }

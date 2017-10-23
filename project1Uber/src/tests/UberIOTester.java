@@ -55,7 +55,7 @@ public class UberIOTester {
 		
 		UsersList users = new UsersList(passengers, drivers);
 		
-		List<Trip> trips = UberRunner.runTrips(users);
+		List<Trip> trips = UberApp.runTrips(users);
 		
 		UberIO.tripLog(trips, "out/tripLog.json");
 		UberIO.finalOutput(trips, users, "out/finalOutput.txt");

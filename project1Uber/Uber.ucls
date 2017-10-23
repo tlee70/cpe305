@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="uber.UberRunner" project="project1Uber" 
-    file="/project1Uber/src/uber/UberRunner.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="uber.UberApp" project="project1Uber" file="/project1Uber/src/uber/UberApp.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="189" y="270"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="uber.UberRunner.TripTask" project="project1Uber" 
-    file="/project1Uber/src/uber/UberRunner.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="uber.UberApp.TripTask" project="project1Uber" 
+    file="/project1Uber/src/uber/UberApp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="378" y="89"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
